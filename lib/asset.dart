@@ -8,7 +8,7 @@ class Asset {
   String _identifier;
 
   /// The resource real path
-  String path;
+  String _path;
 
   /// Original image width
   int _originalWidth;
@@ -22,11 +22,10 @@ class Asset {
   /// Holds the original image data after it is requested
   ByteData _imageData;
 
-  Asset(
-    this._identifier,
-    this._originalWidth,
-    this._originalHeight,
-  );
+  Asset(this._identifier,
+      this._originalWidth,
+      this._originalHeight,
+      this._path);
 
   /// The BinaryChannel name this asset is listening on.
   String get _channel {
@@ -66,6 +65,11 @@ class Asset {
   /// Returns the image identifier
   String get identifier {
     return _identifier;
+  }
+
+  /// Returns the resource real path
+  String get path {
+    return _path;
   }
 
   /// Releases the thumb data.

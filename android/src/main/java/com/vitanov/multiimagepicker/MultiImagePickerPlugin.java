@@ -296,7 +296,9 @@ public class MultiImagePickerPlugin implements MethodCallHandler, PluginRegistry
                 InputStream is = null;
                 Integer width = 0;
                 Integer height = 0;
+                String path = null;
                 try {
+                    path = getDataColumn(context, uri, null, null);
                     is = context.getContentResolver().openInputStream(uri);
                     BitmapFactory.Options dbo = new BitmapFactory.Options();
                     dbo.inJustDecodeBounds = true;
@@ -310,6 +312,7 @@ public class MultiImagePickerPlugin implements MethodCallHandler, PluginRegistry
                     e.printStackTrace();
                 }
 
+                map.put("path", path);
                 map.put("width", width);
                 map.put("height", height);
                 result.add(map);
